@@ -32,4 +32,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           publish_branch: gh-pages
-          exclude_assets: '.github,node_modules,vite.config.js,package.json,package-lock.json,.gitignore,Content.md,SVG_concepts.md'
+          exclude_assets: '.github,node_modules,vite.config.js,package.json,package-lock.json,.gitignore'
