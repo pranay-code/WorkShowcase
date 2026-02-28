@@ -142,28 +142,71 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build the HTML for the sections dynamically
         let sectionsHtml = '';
 
-        if (project.sections && project.sections.length > 0) {
-            project.sections.forEach(sec => {
-                let itemsHtml = '';
-                if (sec.items && sec.items.length > 0) {
-                    itemsHtml = '<ul class="content-list">';
+        if (project.customLayout === 'pipeline-comparison') {
+            // Specialized layout for solar-pipeline project
+            let oldHtml = '', problemHtml = '', newHtml = '', impactHtml = '';
+
+            if (project.sections && project.sections.length > 0) {
+                project.sections.forEach(sec => {
+                    let itemsHtml = '<ul class="content-list block-list">';
                     sec.items.forEach(item => {
                         itemsHtml += `<li>${item}</li>`;
                     });
                     itemsHtml += '</ul>';
-                }
 
-                // If this is an "Impact" section, apply slightly different styling
-                const headerClass = sec.isImpact ? 'impact-badge' : 'content-text';
-                const headerTag = sec.isImpact ? `<span class="${headerClass}"><i class="fa-solid fa-chart-line"></i> ${sec.heading}</span>` : `<strong>${sec.heading}:</strong>`;
+                    if (sec.isOld) {
+                        oldHtml = `<div class="pipeline-block old-block"><h4><i class="fa-solid fa-clock-rotate-left"></i> ${sec.heading}</h4>${itemsHtml}</div>`;
+                    } else if (sec.isProblem) {
+                        problemHtml = `<div class="pipeline-block problem-block"><h4><i class="fa-solid fa-triangle-exclamation"></i> ${sec.heading}</h4>${itemsHtml}</div>`;
+                    } else if (sec.isNew) {
+                        newHtml = `<div class="pipeline-block new-block"><h4><i class="fa-solid fa-rocket"></i> ${sec.heading}</h4>${itemsHtml}</div>`;
+                    } else if (sec.isImpact) {
+                        impactHtml = `
+                        <div class="impact-section-highlighted">
+                            <h3 class="impact-title"><i class="fa-solid fa-bullseye"></i> ${sec.heading}</h3>
+                            ${itemsHtml}
+                        </div>`;
+                    }
+                });
+            }
 
-                sectionsHtml += `
-                    <div class="content-section">
-                        ${!sec.isImpact && sec.heading ? `<p class="${headerClass}">${headerTag}</p>` : sec.isImpact ? headerTag : ''}
-                        ${itemsHtml}
+            sectionsHtml = `
+                <div class="pipeline-comparison-wrapper">
+                    <div class="pipeline-row">
+                        ${oldHtml}
+                        <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                        ${problemHtml}
+                        <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                        ${newHtml}
                     </div>
-                `;
-            });
+                </div>
+                ${impactHtml}
+            `;
+        } else {
+            // Default sequential layout
+            if (project.sections && project.sections.length > 0) {
+                project.sections.forEach(sec => {
+                    let itemsHtml = '';
+                    if (sec.items && sec.items.length > 0) {
+                        itemsHtml = '<ul class="content-list">';
+                        sec.items.forEach(item => {
+                            itemsHtml += `<li>${item}</li>`;
+                        });
+                        itemsHtml += '</ul>';
+                    }
+
+                    // If this is an "Impact" section, apply slightly different styling
+                    const headerClass = sec.isImpact ? 'impact-badge' : 'content-text';
+                    const headerTag = sec.isImpact ? `<span class="${headerClass}"><i class="fa-solid fa-chart-line"></i> ${sec.heading}</span>` : `<strong>${sec.heading}:</strong>`;
+
+                    sectionsHtml += `
+                        <div class="content-section">
+                            ${!sec.isImpact && sec.heading ? `<p class="${headerClass}">${headerTag}</p>` : sec.isImpact ? headerTag : ''}
+                            ${itemsHtml}
+                        </div>
+                    `;
+                });
+            }
         }
 
         let imagesHtml = '';

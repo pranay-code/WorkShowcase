@@ -5,18 +5,30 @@ const projectsData = [
         title: "Solar Power Modelling Pipeline",
         subtitle: "Redefining the existing solar pipeline to make it accurate, scalable and efficient.",
         images: ["images/1.png"],
+        customLayout: "pipeline-comparison",
         sections: [
             {
                 heading: "Old Pipeline",
+                isOld: true,
                 items: [
                     "GHI bias correction ↔ Subjective Assessment (non-linear & complicated)",
                     "Power mode conversion ↔ (redundant)",
-                    "Tuning with time shift ↔ Subjective Assessment",
-                    "<strong>Problem:</strong> Inaccurate & problematic power conversion, complicated, time taking, not automatable, scalable to subjective >> objectivity. NO UI."
+                    "Tuning with time shift ↔ Subjective Assessment"
+                ]
+            },
+            {
+                heading: "Problem",
+                isProblem: true,
+                items: [
+                    "Inaccurate & problematic power conversion.",
+                    "Time taking, complicated, not automatable.",
+                    "Scales to subjective >> objectivity.",
+                    "NO UI for interaction."
                 ]
             },
             {
                 heading: "New Pipeline",
+                isNew: true,
                 items: [
                     "Direct NWP to power mapping.",
                     "Easy tuning with UI.",
@@ -34,43 +46,80 @@ const projectsData = [
             }
         ],
         svg: `
-        <svg viewBox="0 0 500 300" width="100%" height="100%">
+        <svg viewBox="0 0 800 350" width="100%" height="100%">
             <defs>
-                <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFD700" />
-                    <stop offset="100%" stop-color="#FFA500" />
+                <linearGradient id="oldBg" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#fca5a5" />
+                    <stop offset="100%" stop-color="#ef4444" />
                 </linearGradient>
-                <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#2196F3" />
-                    <stop offset="100%" stop-color="#0D47A1" />
+                <linearGradient id="newBg" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#86efac" />
+                    <stop offset="100%" stop-color="#22c55e" />
                 </linearGradient>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+                </marker>
             </defs>
-            <!-- Sun Element -->
-            <circle cx="100" cy="80" r="40" fill="url(#sunGrad)" opacity="0.9">
-                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite" />
-            </circle>
-            <path d="M100 20 L100 0 M100 140 L100 160 M40 80 L20 80 M180 80 L160 80 M55 35 L40 20 M145 125 L160 140 M55 125 L40 140 M145 35 L160 20" stroke="#FFA500" stroke-width="4" stroke-linecap="round">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+
+            <!-- Old Pipeline Flow (Top) -->
+            <text x="50" y="50" fill="#dc2626" font-weight="bold" font-size="16">Old Pipeline (Manual & Subjective)</text>
+            
+            <rect x="50" y="70" width="120" height="60" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="2" />
+            <text x="110" y="105" text-anchor="middle" font-size="12" fill="#7f1d1d" font-weight="bold">Raw NWP</text>
+            
+            <path d="M 170 100 L 220 100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+            
+            <rect x="230" y="60" width="160" height="80" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="2" stroke-dasharray="4" />
+            <text x="310" y="85" text-anchor="middle" font-size="11" fill="#7f1d1d">Subjective Bias Corr.</text>
+            <text x="310" y="105" text-anchor="middle" font-size="11" fill="#7f1d1d">Tuning (Time Shift)</text>
+            <text x="310" y="125" text-anchor="middle" font-size="11" fill="#7f1d1d">Mode Conversion</text>
+
+            <path d="M 390 100 L 440 100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+            
+            <rect x="450" y="70" width="120" height="60" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="2" />
+            <text x="510" y="105" text-anchor="middle" font-size="12" fill="#7f1d1d" font-weight="bold">Inaccurate Power</text>
+
+            <!-- Red X over manual process to symbolize problem -->
+            <path d="M 280 80 L 340 120 M 340 80 L 280 120" stroke="#dc2626" stroke-width="4" opacity="0.6" />
+
+            <!-- The Problem Bridge (Middle) -->
+            <rect x="270" y="155" width="280" height="40" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+            <text x="410" y="180" text-anchor="middle" font-size="12" fill="#475569" font-style="italic">Problem: Not automatable, complex, lacks objectivity.</text>
+            
+            <path d="M 410 145 L 410 150" stroke="#cbd5e1" stroke-width="2" />
+            <path d="M 410 195 L 410 205" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- New Pipeline Flow (Bottom) -->
+            <text x="50" y="220" fill="#16a34a" font-weight="bold" font-size="16">New Pipeline (Automated & UI-Driven)</text>
+
+            <rect x="50" y="240" width="120" height="60" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="2" />
+            <text x="110" y="275" text-anchor="middle" font-size="12" fill="#14532d" font-weight="bold">Raw NWP</text>
+
+            <path d="M 170 270 L 250 270" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)">
+                <animate attributeName="stroke-dasharray" values="0,20;20,0" dur="1s" repeatCount="indefinite" />
             </path>
             
-            <!-- Data Flow Pipeline -->
-            <path d="M150 80 Q 250 80 250 150 T 350 200" fill="none" stroke="#e0e0e0" stroke-width="8" stroke-linecap="round" />
-            <path d="M150 80 Q 250 80 250 150 T 350 200" fill="none" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" stroke-dasharray="10, 10">
-                <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1s" repeatCount="indefinite" linear />
-            </path>
+            <rect x="260" y="230" width="180" height="80" rx="6" fill="url(#newBg)" stroke="#15803d" stroke-width="2" />
+            <text x="350" y="260" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">Direct NWP-to-Power</text>
+            <text x="350" y="280" text-anchor="middle" font-size="11" fill="#ffffff">Automated UI Backend</text>
             
-            <!-- Solar Panel -->
-            <rect x="300" y="180" width="120" height="80" rx="4" fill="url(#panelGrad)" transform="skewX(-15)" />
-            <path d="M330 180 L300 260 M360 180 L330 260 M390 180 L360 260" stroke="#64B5F6" stroke-width="2" transform="skewX(-15)" />
-            <path d="M300 206 L420 206 M290 233 L410 233" stroke="#64B5F6" stroke-width="2" transform="skewX(-15)" />
-            
-            <!-- Tech UI overlays -->
-            <rect x="180" y="100" width="80" height="40" rx="20" fill="#ffffff" stroke="#2196F3" stroke-width="2" />
-            <text x="220" y="125" font-family="monospace" font-size="12" font-weight="bold" fill="#2196F3" text-anchor="middle">NWP</text>
-            <circle cx="220" cy="120" r="30" fill="none" stroke="#2196F3" stroke-width="1" opacity="0.5">
-                <animate attributeName="r" values="30; 40" dur="2s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.5; 0" dur="2s" repeatCount="indefinite" />
+            <!-- Data Flow Data -->
+            <circle cx="210" cy="270" r="4" fill="#16a34a">
+                <animate attributeName="cx" values="170; 250" dur="1.5s" repeatCount="indefinite" />
             </circle>
+
+            <path d="M 440 270 L 520 270" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)">
+                 <animate attributeName="stroke-dasharray" values="0,20;20,0" dur="1s" repeatCount="indefinite" />
+            </path>
+
+            <circle cx="480" cy="270" r="4" fill="#16a34a">
+                <animate attributeName="cx" values="440; 520" dur="1.5s" repeatCount="indefinite" />
+            </circle>
+
+            <rect x="530" y="240" width="140" height="60" rx="6" fill="#f0fdf4" stroke="#10b981" stroke-width="3" />
+            <text x="600" y="275" text-anchor="middle" font-size="13" fill="#14532d" font-weight="bold">Accurate Output</text>
+            <!-- Checkmark -->
+            <path d="M 580 285 L 595 300 L 620 260" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.5" />
         </svg>`
     },
     {
