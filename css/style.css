@@ -701,6 +701,76 @@ body {
     }
 }
 
+/* 
+   -----------------------------------
+   Pipeline Flow Custom Layout (Project 1)
+   -----------------------------------
+*/
+
+.pipeline-flow-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin: 30px 0;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.flow-step {
+    flex: 1;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--sidebar-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.flow-step h4 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--sidebar-border);
+}
+
+.flow-old h4 {
+    color: #f59e0b;
+    border-color: #fde68a;
+}
+
+.flow-problem h4 {
+    color: #ef4444;
+    border-color: #fca5a5;
+}
+
+.flow-new h4 {
+    color: var(--success-color);
+    border-color: #bbf7d0;
+}
+
+.flow-problem {
+    background-color: #fef2f2;
+    border-color: #fecaca;
+    border-style: dashed;
+}
+
+.flow-step .content-list {
+    padding-left: 20px;
+}
+
+.flow-step .content-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+    .pipeline-flow-container {
+        flex-direction: column;
+    }
+}
+
 /* Loading State */
 .loading-state {
     display: flex;
