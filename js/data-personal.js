@@ -2,7 +2,7 @@ const personalDevelopment = [
     {
         id: "personal-dev",
         category: "personal",
-        title: "Personal Development Requirements",
+        title: "Managerial and Technical",
         subtitle: "(To lead and grow beyond a typical career trajectory)",
         sections: [
             {
