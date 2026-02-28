@@ -294,7 +294,7 @@ body {
     background-color: #f8fafc;
     border-radius: var(--radius-md);
     border: 2px solid var(--sidebar-border);
-    padding: 30px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -316,7 +316,6 @@ body {
 /* Responsive SVG wrapper */
 .svg-wrapper {
     width: 100%;
-    max-width: 700px;
     height: auto;
 }
 
@@ -778,7 +777,7 @@ body {
 }
 
 .professional-text-col {
-    flex: 1;
+    flex: 1.5;
     min-width: 0;
 }
 
@@ -920,8 +919,9 @@ body {
 
 /* Specific sizing for Professional Development dual-theme images to keep them from being too massive, while hugging their natural edges tight */
 .split-theme-img {
-    width: auto !important;
-    max-height: 500px !important;
+    max-width: 100%;
+    width: auto;
+    max-height: 500px;
     margin: 0 auto;
     display: block;
 }
