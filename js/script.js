@@ -5,12 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const navPersonal = document.getElementById('nav-personal');
     const contentCard = document.getElementById('content-card');
 
+    // Zoom Modal Elements
+    const zoomModal = document.getElementById('zoom-modal');
+    const zoomContent = document.getElementById('zoom-content');
+    const zoomClose = document.querySelector('.zoom-close');
+
     // State
     let currentProjectId = null;
 
     // Initialize the application
     function init() {
         renderNavigation();
+        setupZoomModal();
 
         // Load first project by default if data exists
         if (projectsData && projectsData.length > 0) {
@@ -18,6 +24,51 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             contentCard.innerHTML = '<div class="loading-state">No projects found. Please check data source.</div>';
         }
+    }
+
+    // Setup Event Listeners for Zoom Modal
+    function setupZoomModal() {
+        if (!zoomModal) return;
+
+        // Close on X click
+        if (zoomClose) {
+            zoomClose.addEventListener('click', closeZoomModal);
+        }
+
+        // Close on background click
+        zoomModal.addEventListener('click', (e) => {
+            if (e.target === zoomModal) {
+                closeZoomModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && zoomModal.classList.contains('active')) {
+                closeZoomModal();
+            }
+        });
+    }
+
+    function openZoomModal(contentHtml) {
+        if (!zoomModal || !zoomContent) return;
+        zoomContent.innerHTML = contentHtml;
+        zoomModal.classList.remove('hidden');
+        // Small delay to allow display to kick in before opacity transition
+        setTimeout(() => {
+            zoomModal.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeZoomModal() {
+        if (!zoomModal) return;
+        zoomModal.classList.remove('active');
+        setTimeout(() => {
+            zoomModal.classList.add('hidden');
+            zoomContent.innerHTML = '';
+            document.body.style.overflow = ''; // Restore background scrolling
+        }, 300); // 300ms matches CSS transition time
     }
 
     // Render sidebar navigation links
@@ -180,6 +231,24 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 const targetId = e.currentTarget.dataset.target;
                 if (targetId) loadProject(targetId);
+            });
+        });
+
+        // Attach zoom listeners to images and SVGs
+        const interactiveElements = contentCard.querySelectorAll('.project-image, .svg-container');
+        interactiveElements.forEach(el => {
+            el.addEventListener('click', (e) => {
+                // Determine what content to clone into the zoom modal
+                if (e.currentTarget.classList.contains('project-image')) {
+                    // Clone the image with a new class for styling if needed, but keeping src
+                    openZoomModal(`<img src="${e.currentTarget.src}" class="zoomed-image" alt="Zoomed Project Image">`);
+                } else if (e.currentTarget.classList.contains('svg-container')) {
+                    // Clone the entire SVG wrapper
+                    const svgWrapper = e.currentTarget.querySelector('.svg-wrapper');
+                    if (svgWrapper) {
+                        openZoomModal(svgWrapper.outerHTML);
+                    }
+                }
             });
         });
 
