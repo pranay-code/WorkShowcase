@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const navCompleted = document.getElementById('nav-completed');
-    const navOngoing = document.getElementById('nav-ongoing');
-    const navPersonal = document.getElementById('nav-personal');
+    const navProjects = document.getElementById('nav-projects');
+    const navProfessional = document.getElementById('nav-professional');
     const contentCard = document.getElementById('content-card');
 
     // Zoom Modal Elements
@@ -74,33 +73,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render sidebar navigation links
     function renderNavigation() {
         // Clear existing lists
-        navCompleted.innerHTML = '';
-        navOngoing.innerHTML = '';
-        navPersonal.innerHTML = '';
+        navProjects.innerHTML = '';
+        navProfessional.innerHTML = '';
 
-        let counters = { completed: 1, ongoing: 1, personal: 1 };
+        let counters = { completed: 1, ongoing: 1, personal: 1, projects: 1, professional: 1 };
 
         projectsData.forEach(project => {
             const li = document.createElement('li');
             li.className = 'nav-item';
 
             const category = project.category || 'completed';
-            const num = counters[category]++;
+
+            // Determine actual display bucket and numbering
+            let displayBucket, currentNum;
+            if (category === 'completed' || category === 'ongoing') {
+                displayBucket = 'projects';
+                currentNum = counters.projects++;
+            } else {
+                displayBucket = 'professional';
+                currentNum = counters.professional++;
+            }
 
             li.innerHTML = `
                 <a href="#" class="nav-link" data-id="${project.id}">
-                    <span class="nav-number">${num}.</span>
+                    <span class="nav-number">${currentNum}.</span>
                     <span class="nav-text">${project.title}</span>
                 </a>
             `;
 
             // Append to appropriate section
-            if (category === 'completed') {
-                navCompleted.appendChild(li);
-            } else if (category === 'ongoing') {
-                navOngoing.appendChild(li);
-            } else if (category === 'personal') {
-                navPersonal.appendChild(li);
+            if (displayBucket === 'projects') {
+                navProjects.appendChild(li);
+            } else if (displayBucket === 'professional') {
+                navProfessional.appendChild(li);
             }
 
             // Add click listener
