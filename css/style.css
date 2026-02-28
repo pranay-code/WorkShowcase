@@ -184,7 +184,8 @@ body {
 .content-card {
     background-color: var(--card-bg);
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
+    /* Widened for monitor viewing */
     min-height: 80vh;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
@@ -262,7 +263,7 @@ body {
     width: 100%;
     background-color: #f8fafc;
     border-radius: var(--radius-md);
-    border: 1px solid var(--sidebar-border);
+    border: 2px solid var(--sidebar-border);
     padding: 30px;
     display: flex;
     justify-content: center;
@@ -272,6 +273,14 @@ body {
     min-height: 350px;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: crosshair;
+}
+
+.svg-container:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 136, 204, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Responsive SVG wrapper */
@@ -682,6 +691,14 @@ body {
     width: 100%;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--sidebar-border);
+    border: 2px solid var(--sidebar-border);
     object-fit: contain;
+    transition: all 0.3s ease;
+    cursor: zoom-in;
+}
+
+.project-images .project-image:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 136, 204, 0.3);
+    transform: translateY(-2px);
 }
