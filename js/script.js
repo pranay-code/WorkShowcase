@@ -164,6 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 else if (sec.isProblem) flowClass = 'flow-problem';
                 else if (sec.isNewPipeline) flowClass = 'flow-new';
                 else if (sec.isImpact) flowClass = 'impact-section';
+                else if (sec.isTraining) flowClass = 'flow-training';
+                else if (sec.isPractice) flowClass = 'flow-practice';
                 else flowClass = 'flow-standard';
 
                 let listHtml = itemsHtml;
@@ -182,11 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // We accumulate all items into pipelineFlowHtml and wrap it
         if (pipelineFlowHtml) {
-            sectionsHtml = `
-                <div class="pipeline-flow-container">
-                    ${pipelineFlowHtml}
-                </div>
-            `;
+            if (project.category === 'personal') {
+                sectionsHtml = `
+                    <div class="professional-split-container">
+                        ${pipelineFlowHtml}
+                    </div>
+                `;
+            } else {
+                sectionsHtml = `
+                    <div class="pipeline-flow-container">
+                        ${pipelineFlowHtml}
+                    </div>
+                `;
+            }
         }
 
         let imagesHtml = '';

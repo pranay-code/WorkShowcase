@@ -750,6 +750,56 @@ body {
     border-color: #bae6fd;
 }
 
+/* Professional Split Layout Sections (Training vs Practice) */
+.flow-training,
+.flow-practice {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+}
+
+.flow-training h4 {
+    color: #eab308;
+    /* Yellow/Orange */
+    border-color: #fef08a;
+}
+
+.flow-practice h4 {
+    color: #10b981;
+    /* Green */
+    border-color: #bbf7d0;
+}
+
+/* Optional wrapper for splitting explicitly */
+.professional-split-container {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+    align-items: stretch;
+    position: relative;
+}
+
+/* The vertical dashed line */
+.professional-split-container::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    border-left: 2px dashed #cbd5e1;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 900px) {
+    .professional-split-container {
+        flex-direction: column;
+    }
+
+    .professional-split-container::after {
+        display: none;
+    }
+}
+
 /* Impact section with Special Skyline Border */
 .impact-section {
     background-color: #f0f9ff;
