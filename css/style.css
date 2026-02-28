@@ -740,6 +740,13 @@ body {
     border-color: #bbf7d0;
 }
 
+.impact-section h4 {
+    color: var(--text-dark);
+    border-color: var(--success-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
 .flow-problem {
     background-color: #fef2f2;
     border-color: #fecaca;

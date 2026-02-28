@@ -172,9 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // For others, it can be a standalone section, but the flexbox wrapper is smart enough
                     pipelineFlowHtml += `
                         <div class="flow-step impact-section">
-                            <div class="impact-header">
-                                <h3>${sec.heading}</h3>
-                            </div>
+                            <h4>${sec.heading}</h4>
                             ${itemsHtml.replace('class="content-list"', 'class="content-list impact-list"')}
                         </div>
                     `;
