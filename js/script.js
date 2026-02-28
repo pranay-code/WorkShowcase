@@ -203,7 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (project.images && project.images.length > 0) {
             imagesHtml = '<div class="project-images">';
             project.images.forEach(imgSrc => {
-                imagesHtml += `<img src="${imgSrc}" alt="Project Demonstration" class="project-image" />`;
+                const extraClass = project.category === 'personal' ? ' split-theme-img' : '';
+                imagesHtml += `<img src="${imgSrc}" alt="Project Demonstration" class="project-image${extraClass}" />`;
             });
             imagesHtml += '</div>';
         }
