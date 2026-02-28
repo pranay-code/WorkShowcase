@@ -45,59 +45,75 @@ const projectsData = [
         ],
         svg: `
         <svg viewBox="0 0 500 300" width="100%" height="100%">
-            <!-- Old Pipeline Representation: Chaotic, Tangled Lines, Manual Process -->
-            <g stroke="#f87171" stroke-width="2" fill="none">
-                <!-- Tangled mess of overlapping lines to symbolize complication -->
-                <path d="M 40 80 Q 90 20 120 100 T 50 140 Q 110 180 140 60" />
-                <path d="M 60 120 Q 20 160 100 170 T 150 90" stroke-dasharray="4,4" />
-                <path d="M 70 50 L 130 150 M 50 150 L 130 50" stroke="#ef4444" stroke-width="3" opacity="0.6">
-                    <animate attributeName="opacity" values="0.2; 0.8; 0.2" dur="1s" repeatCount="indefinite" />
-                </path>
-                <!-- Manual nodes (representing subjective tuning) -->
-                <circle cx="90" cy="110" r="15" fill="#fee2e2" stroke="#dc2626" stroke-width="3" stroke-dasharray="5,5">
-                     <animateTransform attributeName="transform" type="rotate" from="0 90 110" to="360 90 110" dur="4s" repeatCount="indefinite" />
-                </circle>
+            <!-- Background Grid to signify data/analytics -->
+            <g stroke="#f1f5f9" stroke-width="1">
+                <line x1="100" y1="50" x2="100" y2="250" />
+                <line x1="150" y1="50" x2="150" y2="250" />
+                <line x1="200" y1="50" x2="200" y2="250" />
+                <line x1="250" y1="50" x2="250" y2="250" />
+                <line x1="300" y1="50" x2="300" y2="250" />
+                <line x1="350" y1="50" x2="350" y2="250" />
+                <line x1="400" y1="50" x2="400" y2="250" />
             </g>
 
-            <!-- Transition / Problem Arrow / Bottleneck -->
-            <!-- The chaotic lines feed into a narrow bottleneck -->
-            <path d="M 160 100 C 190 100 200 130 220 140 L 220 160 C 200 170 190 200 160 200" fill="#fef08a" stroke="#eab308" stroke-width="2" />
-            
-            <g transform="translate(240, 150)">
-                <!-- Warning/Problem indicator without text -->
-                <polygon points="0,-25 -25,20 25,20" fill="#fef08a" stroke="#eab308" stroke-width="3">
-                    <animate attributeName="opacity" values="0.5; 1; 0.5" dur="1.5s" repeatCount="indefinite" />
-                </polygon>
-                <line x1="0" y1="-8" x2="0" y2="8" stroke="#ca8a04" stroke-width="4" stroke-linecap="round" />
-                <circle cx="0" cy="14" r="2.5" fill="#ca8a04" />
-            </g>
-
-            <!-- Funneling out into the New Pipeline -->
-            <path d="M 270 140 C 290 130 300 100 330 100 L 330 200 C 300 200 290 170 270 160" fill="#dcfce7" stroke="#22c55e" stroke-width="2" />
-
-            <!-- New Pipeline Representation: Clean, Direct, Scalable, Objective -->
-            <g transform="translate(340, 90)">
-                <!-- Clean parallel data streams -->
-                <line x1="0" y1="20" x2="110" y2="20" stroke="#3b82f6" stroke-width="6" stroke-linecap="round">
-                    <animate attributeName="stroke-dasharray" values="0,110; 110,0" dur="2s" repeatCount="indefinite" />
-                </line>
-                <line x1="0" y1="60" x2="110" y2="60" stroke="#3b82f6" stroke-width="6" stroke-linecap="round">
-                    <animate attributeName="stroke-dasharray" values="0,110; 110,0" dur="2s" begin="0.6s" repeatCount="indefinite" />
-                </line>
-                <line x1="0" y1="100" x2="110" y2="100" stroke="#3b82f6" stroke-width="6" stroke-linecap="round">
-                    <animate attributeName="stroke-dasharray" values="0,110; 110,0" dur="2s" begin="1.2s" repeatCount="indefinite" />
-                </line>
-
-                <!-- UI/Automation interface representation (Structured, clean boxes) -->
-                <rect x="25" y="0" width="60" height="120" rx="8" fill="none" stroke="#2563eb" stroke-width="3" opacity="0.8" />
-                <circle cx="55" cy="20" r="10" fill="#93c5fd" />
-                <circle cx="55" cy="60" r="10" fill="#93c5fd" />
-                <circle cx="55" cy="100" r="10" fill="#93c5fd" />
+            <!-- 1. Left Side: Raw, Cumbersome Data (Scatter) -->
+            <g fill="#94a3b8">
+                <!-- Random dots representing raw, unscaled inputs -->
+                <circle cx="80" cy="180" r="4" />
+                <circle cx="100" cy="120" r="3" />
+                <circle cx="120" cy="210" r="5" />
+                <circle cx="130" cy="90" r="4" />
+                <circle cx="150" cy="160" r="3" />
+                <circle cx="170" cy="100" r="5" />
+                <circle cx="180" cy="200" r="4" />
                 
-                <!-- Expanding scaling effect at the end -->
-                <path d="M 120 20 L 140 0 L 140 40 Z" fill="#60a5fa" />
-                <path d="M 120 60 L 140 40 L 140 80 Z" fill="#60a5fa" />
-                <path d="M 120 100 L 140 80 L 140 120 Z" fill="#60a5fa" />
+                <!-- Lines showing messy, subjective manual connections -->
+                <path d="M 80 180 L 100 120 L 150 160 L 130 90" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" />
+                <path d="M 120 210 L 150 160 L 180 200" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" />
+            </g>
+
+            <!-- 2. Middle: The Model / Analytics Engine -->
+            <rect x="220" y="90" width="60" height="120" rx="4" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" />
+            <!-- Inner gears/processing symbol -->
+            <circle cx="250" cy="150" r="20" fill="none" stroke="#60a5fa" stroke-width="3" stroke-dasharray="6,4">
+                <animateTransform attributeName="transform" type="rotate" from="0 250 150" to="360 250 150" dur="4s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="250" cy="150" r="8" fill="#3b82f6" />
+            
+            <!-- Data Flowing In -->
+            <path d="M 190 150 L 220 150" stroke="#94a3b8" stroke-width="4" stroke-linecap="round">
+                 <animate attributeName="stroke-dasharray" values="0,30; 30,0" dur="1.5s" repeatCount="indefinite" />
+            </path>
+
+            <!-- Data Flowing Out -->
+            <path d="M 280 150 L 310 150" stroke="#10b981" stroke-width="4" stroke-linecap="round">
+                 <animate attributeName="stroke-dasharray" values="0,30; 30,0" dur="1.5s" repeatCount="indefinite" />
+            </path>
+
+            <!-- 3. Right Side: Clean, Scalable Output (Smooth Power Curve) -->
+            <!-- Axis for the output curve -->
+            <line x1="310" y1="220" x2="440" y2="220" stroke="#94a3b8" stroke-width="2" />
+            <line x1="310" y1="220" x2="310" y2="80" stroke="#94a3b8" stroke-width="2" />
+            
+            <!-- Smooth Solar Bell Curve representing accurate modelling -->
+            <path d="M 310 220 Q 340 220 375 90 T 440 220" fill="rgba(34, 197, 94, 0.15)" stroke="#10b981" stroke-width="4" stroke-linecap="round">
+                <animate attributeName="stroke-dasharray" values="0,300; 300,0" dur="3s" repeatCount="indefinite" />
+            </path>
+            
+            <!-- Objective automated data points lining up perfectly on the curve -->
+            <g fill="#059669">
+                <circle cx="330" cy="188" r="4">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="360" cy="110" r="4">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="390" cy="110" r="4">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="420" cy="188" r="4">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1.5s" repeatCount="indefinite" />
+                </circle>
             </g>
         </svg>`
     },
