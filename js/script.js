@@ -168,8 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 } else if (sec.isImpact) {
-                    sectionsHtml += `
-                        <div class="impact-section">
+                    // For Project 1, we add Impact directly into the pipeline flexbox
+                    // For others, it can be a standalone section, but the flexbox wrapper is smart enough
+                    pipelineFlowHtml += `
+                        <div class="flow-step impact-section">
                             <div class="impact-header">
                                 <h3>${sec.heading}</h3>
                             </div>
