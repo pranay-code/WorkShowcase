@@ -155,14 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${sectionsHtml}
                 </div>
                 
+                ${imagesHtml}
+                
                 ${project.svg ? `
                 <div class="svg-container">
                     <div class="svg-wrapper">
                         ${project.svg}
                     </div>
                 </div>` : ''}
-                
-                ${imagesHtml}
             </div>
             
             ${navButtonsHtml}

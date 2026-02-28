@@ -184,7 +184,7 @@ body {
 .content-card {
     background-color: var(--card-bg);
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     min-height: 80vh;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
