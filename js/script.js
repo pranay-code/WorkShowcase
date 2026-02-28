@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close on background click
         zoomModal.addEventListener('click', (e) => {
-            if (e.target === zoomModal) {
+            if (e.target === zoomModal || e.target === zoomContent) {
                 closeZoomModal();
             }
         });
