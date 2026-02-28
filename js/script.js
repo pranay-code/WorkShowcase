@@ -159,46 +159,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemsHtml += '</ul>';
                 }
 
-                // Check if section is part of the special pipeline flow (Project 1)
-                if (sec.isOldPipeline || sec.isProblem || sec.isNewPipeline) {
-                    let flowClass = '';
-                    if (sec.isOldPipeline) flowClass = 'flow-old';
-                    else if (sec.isProblem) flowClass = 'flow-problem';
-                    else if (sec.isNewPipeline) flowClass = 'flow-new';
+                let flowClass = '';
+                if (sec.isOldPipeline) flowClass = 'flow-old';
+                else if (sec.isProblem) flowClass = 'flow-problem';
+                else if (sec.isNewPipeline) flowClass = 'flow-new';
+                else if (sec.isImpact) flowClass = 'impact-section';
+                else flowClass = 'flow-standard';
 
-                    pipelineFlowHtml += `
-                        <div class="flow-step ${flowClass}">
-                            <h4>${sec.heading}</h4>
-                            ${itemsHtml}
-                        </div>
-                    `;
-                } else if (sec.isImpact) {
-                    // For Project 1, we add Impact directly into the pipeline flexbox
-                    // For others, it can be a standalone section, but the flexbox wrapper is smart enough
-                    pipelineFlowHtml += `
-                        <div class="flow-step impact-section">
-                            <h4>${sec.heading}</h4>
-                            ${itemsHtml.replace('class="content-list"', 'class="content-list impact-list"')}
-                        </div>
-                    `;
-                } else {
-                    sectionsHtml += `
-                        <div class="content-section">
-                            ${sec.heading ? `<p class="content-text"><strong>${sec.heading}:</strong></p>` : ''}
-                            ${itemsHtml}
-                        </div>
-                    `;
+                let listHtml = itemsHtml;
+                if (sec.isImpact) {
+                    listHtml = itemsHtml.replace('class="content-list"', 'class="content-list impact-list"');
                 }
+
+                pipelineFlowHtml += `
+                    <div class="flow-step ${flowClass}">
+                        <h4>${sec.heading}</h4>
+                        ${listHtml}
+                    </div>
+                `;
             });
         }
 
-        // If we accumulated pipeline flow items, prepend them to the normal sections
+        // We accumulate all items into pipelineFlowHtml and wrap it
         if (pipelineFlowHtml) {
             sectionsHtml = `
                 <div class="pipeline-flow-container">
                     ${pipelineFlowHtml}
                 </div>
-            ` + sectionsHtml;
+            `;
         }
 
         let imagesHtml = '';

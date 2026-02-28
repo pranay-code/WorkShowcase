@@ -736,13 +736,33 @@ body {
 }
 
 .flow-new h4 {
-    color: var(--success-color);
+    color: #10b981;
     border-color: #bbf7d0;
 }
 
+.flow-standard {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.flow-standard h4 {
+    color: var(--primary-color);
+    border-color: #bae6fd;
+}
+
+/* Impact section with Special Skyline Border */
+.impact-section {
+    background-color: #f0f9ff;
+    border-color: #0ea5e9;
+    /* Skyline Blue */
+    border-width: 2px;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+
 .impact-section h4 {
-    color: var(--text-dark);
-    border-color: var(--success-color);
+    color: #0284c7;
+    /* Darker Skyline Blue */
+    border-color: #0ea5e9;
     font-size: 1.2rem;
     font-weight: 700;
 }
