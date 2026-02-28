@@ -124,7 +124,7 @@ const remainingProjects = [
             {
                 heading: "Problem",
                 items: [
-                    "The need to add more NWP sources to our existing system. Jua is likely the first and most popular AI-native commercial weather forecast model, utilizing a proprietary algorithm (BPT: Earth Physics Transformer).",
+                    "The need to add more NWP sources to our existing system. Jua is likely the first and most popular AI-native commercial weather forecast model, utilizing a proprietary algorithm (EPT: Earth Physics Transformer).",
                     "It provides early model revisions.",
                     "It offers high spatial resolution."
                 ]

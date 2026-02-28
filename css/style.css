@@ -880,11 +880,12 @@ body {
     transform: translateY(-2px);
 }
 
-/* Specific sizing for Professional Development dual-theme images to keep them from being too massive */
+/* Specific sizing for Professional Development dual-theme images to keep them from being too massive, while hugging their natural edges tight */
 .split-theme-img {
-    max-height: 450px !important;
-    max-width: 80% !important;
+    width: auto !important;
+    max-height: 500px !important;
     margin: 0 auto;
+    display: block;
 }
 
 /* 
