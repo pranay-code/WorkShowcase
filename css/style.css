@@ -282,16 +282,7 @@ body {
     font-weight: 600;
 }
 
-.impact-badge {
-    display: inline-block;
-    background-color: #e6fcf5;
-    color: #0ca678;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
+
 
 /* 
    -----------------------------------
