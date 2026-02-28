@@ -229,26 +229,45 @@ document.addEventListener('DOMContentLoaded', () => {
         navButtonsHtml += '</div>';
 
         // Construct full card HTML
+        let bodyHtml;
+        if (project.category === 'personal' && imagesHtml) {
+            // Special side-by-side layout for Professional Development pages
+            bodyHtml = `
+                <div class="professional-page-layout">
+                    <div class="professional-text-col">
+                        ${sectionsHtml}
+                    </div>
+                    <div class="professional-img-col">
+                        ${imagesHtml}
+                    </div>
+                </div>
+            `;
+        } else {
+            bodyHtml = `
+                <div class="project-body">
+                    <div class="project-text-content">
+                        ${sectionsHtml}
+                    </div>
+                    
+                    ${imagesHtml}
+                    
+                    ${project.svg ? `
+                    <div class="svg-container">
+                        <div class="svg-wrapper">
+                            ${project.svg}
+                        </div>
+                    </div>` : ''}
+                </div>
+            `;
+        }
+
         const cardHtml = `
             <div class="project-header">
                 <h1 class="project-title">${project.title}</h1>
                 <p class="project-subtitle">${project.subtitle}</p>
             </div>
             
-            <div class="project-body">
-                <div class="project-text-content">
-                    ${sectionsHtml}
-                </div>
-                
-                ${imagesHtml}
-                
-                ${project.svg ? `
-                <div class="svg-container">
-                    <div class="svg-wrapper">
-                        ${project.svg}
-                    </div>
-                </div>` : ''}
-            </div>
+            ${bodyHtml}
             
             ${navButtonsHtml}
         `;
