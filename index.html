@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Showcase - Pranay</title>
+
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>WORK SHOWCASE</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <div class="sidebar-section" id="sidebar-completed">
+                <h3 class="section-title">COMPLETED PROJECTS</h3>
+                <ul class="nav-list" id="nav-completed">
+                    <!-- Nav items injected via JS -->
+                </ul>
+            </div>
+
+            <div class="sidebar-section" id="sidebar-ongoing">
+                <h3 class="section-title">ONGOING PROJECTS</h3>
+                <ul class="nav-list" id="nav-ongoing">
+                    <!-- Nav items injected via JS -->
+                </ul>
+            </div>
+
+            <div class="sidebar-section" id="sidebar-personal">
+                <h3 class="section-title">PERSONAL DEVELOPMENT</h3>
+                <ul class="nav-list" id="nav-personal">
+                    <!-- Nav items injected via JS -->
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-card" id="content-card">
+                <!-- Project details injected via JS -->
+                <div class="loading-state">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Loading...
+                </div>
+            </div>
+        </main>
+
+        <!-- Background decorative elements -->
+        <div class="bg-elements">
+            <!-- These are the floating icons in the background seen in the reference -->
+            <div class="float-icon icon-1"><i class="fa-solid fa-solar-panel"></i></div>
+            <div class="float-icon icon-2"><i class="fa-solid fa-wind"></i></div>
+            <div class="float-icon icon-3"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="float-icon icon-4"><i class="fa-solid fa-database"></i></div>
+            <div class="float-icon icon-5"><i class="fa-solid fa-bolt"></i></div>
+            <div class="float-icon icon-6"><i class="fa-solid fa-cloud"></i></div>
+        </div>
+    </div>
+
+    <!-- Data and Application Logic -->
+    <script src="js/data.js"></script>
+    <script src="js/data-personal.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

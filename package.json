@@ -1,0 +1,22 @@
+{
+    "name": "work-showcase",
+    "version": "1.0.0",
+    "description": "A professional work showcase UI with animated SVGs.",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "keywords": [
+        "portfolio",
+        "showcase",
+        "corporate",
+        "svg-animation"
+    ],
+    "author": "Pranay",
+    "license": "ISC",
+    "devDependencies": {
+        "vite": "^5.2.0"
+    }
+}
