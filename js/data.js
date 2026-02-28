@@ -10,25 +10,23 @@ const projectsData = [
                 heading: "Old Pipeline",
                 isOldPipeline: true,
                 items: [
-                    "GHI bias correction ↔ Subjective Assessment (non-linear & complicated).",
-                    "Power mode conversion ↔ (redundant).",
-                    "Tuning with time shift ↔ Subjective Assessment."
+                    "GHI bias correction, dependent on GHI measurement.",
+                    "Power conversion.",
+                    "Tuning with time shift."
                 ]
             },
             {
                 heading: "Problem",
                 isProblem: true,
                 items: [
-                    "Inaccurate & problematic power conversion.",
-                    "Complicated, time taking, not automatable.",
-                    "Scalable to subjective >> objectivity. NO UI."
+                    "Time taking, Inaccurate power modelling at times, complicated, manual, process involves high level of subjective evaluation and NO UI."
                 ]
             },
             {
                 heading: "New Pipeline",
                 isNewPipeline: true,
                 items: [
-                    "Direct NWP to power mapping.",
+                    "Direct NWP to power mapping, no dependency of GHI measurement data.",
                     "Easy tuning with UI.",
                     "Simple code base."
                 ]
@@ -39,7 +37,7 @@ const projectsData = [
                 items: [
                     "Accurate power modelling.",
                     "Scalable to even 100 sites with minimal supervision.",
-                    "Objective process fully."
+                    "Primarily Objective process."
                 ]
             }
         ],
@@ -121,31 +119,28 @@ const projectsData = [
         id: "solar-fog",
         category: "completed",
         title: "Solar Fog Model Development",
-        subtitle: "Innovative data centric project focusing on fog event prediction.",
+        subtitle: "An innovative, data-centric project.",
         images: ["images/2.png"],
         sections: [
             {
                 heading: "Problem",
                 items: [
-                    "Impossible prediction of fog events with either NWP or persistence forecast.",
-                    "Same thing is accepted by the energymeteo."
+                    "Predicting fog events is nearly impossible using either NWP or persistence forecasts."
                 ]
             },
             {
                 heading: "Curious Experiment",
                 items: [
-                    "Maybe NWP model/measurement data is showing the skill not through cloud cover/GHI, but distributed across multiple variables.",
-                    "<strong>Flowchart:</strong>",
-                    "Impossible task of manual feature engg -> Deep learning -> DL is one area but too little data.",
-                    "Interest to try dimensionality reduction using UMAP -> worked -> Clear signal in separating fog & no fog.",
-                    "Simple LR applied on the dataset."
+                    "We hypothesized that NWP models or measurement data might contain predictive skill—not directly through cloud cover or GHI, but distributed across multiple divergent variables.",
+                    "<strong>Approach:</strong> Because manual feature engineering was impossible given the variables and horizon, we initially considered Deep Learning (DL), but the dataset was too small.",
+                    "<strong>Execution:</strong> We used UMAP for dimensionality reduction, which successfully yielded a clear signal separating 'fog' from 'no fog'. A simple Logistic Regression (LR) model was then applied to the dataset."
                 ]
             },
             {
                 heading: "Results",
                 isImpact: true,
                 items: [
-                    "On Average ~0.75 precision, ~0.6 Recall."
+                    "Achieved an average precision of ~0.75 and a recall of ~0.60."
                 ]
             }
         ],
@@ -196,31 +191,30 @@ const projectsData = [
             {
                 heading: "The Interesting Insight",
                 items: [
-                    "We observed that not always the best model gives the correct forecast. At times, other forecast models perform well with huge differences."
+                    "During early discussions regarding wind performance, we observed that the generally 'best' model does not always provide the most accurate forecast at any given time; other models sometimes outperform it by a huge margin."
                 ]
             },
             {
                 heading: "Problem",
                 items: [
-                    "Big penalties coming regularly, creating a need to build an objective framework for deciding the forecast model."
+                    "High penalties were occurring regularly, highlighting the need for an objective framework to decide which forecast model to use."
                 ]
             },
             {
                 heading: "The Tool (Dashboard)",
                 items: [
-                    "Provides objective and subjective assessment facility.",
-                    "Evaluates real-time penalties of selected time frames.",
-                    "Shows distribution of forecast and actual for the same time frame.",
-                    "Provides the forecaster with live evaluation."
+                    "Provides an objective and subjective assessment facility.",
+                    "Evaluates real-time penalties for a selected timeframe and compares the distribution of forecast vs. actual generation.",
+                    "Equips the forecaster with live evaluation capabilities."
                 ]
             },
             {
                 heading: "Impact",
                 isImpact: true,
                 items: [
-                    "Big impact in terms of reduced penalties.",
-                    "Defined objective framework for forecast selection leading to effective decision making.",
-                    "Facility to verify the decision and provide the revision with better forecast."
+                    "Significant reduction in penalties.",
+                    "Established a defined, objective framework for forecast selection, leading to effective decision-making.",
+                    "Provided a facility to verify decisions and output revised, more accurate forecasts."
                 ]
             }
         ],
@@ -282,24 +276,25 @@ const remainingProjects = [
             {
                 heading: "Problem",
                 items: [
-                    "Need to add more NWP sources in our existing system.",
-                    "Jua provides highly accurate, high resolution, and early model revisions."
+                    "The need to add more NWP sources to our existing system. Jua is likely the first and most popular AI-native commercial weather forecast model, utilizing a proprietary algorithm (BPT: Earth Physics Transformer).",
+                    "It provides early model revisions.",
+                    "It offers high spatial resolution."
                 ]
             },
             {
                 heading: "Project",
                 items: [
                     "Integrated the Jua NWP pipeline from scratch.",
-                    "Built wind power modelling pipeline over it.",
-                    "Integrated into the forecasting dashboard."
+                    "Built a wind power modeling pipeline over it.",
+                    "Integrated the model into the forecasting dashboard."
                 ]
             },
             {
                 heading: "Impact",
                 isImpact: true,
                 items: [
-                    "Significant performance improvement over existing models like ECMWF, NCEP etc.",
-                    "Early dispatch of model revision so latest forecast availability."
+                    "Significant performance improvement over existing physics-based models like ECMWF, NCEP, etc.",
+                    "Early dispatch of model revisions ensures the latest forecasts are always available."
                 ]
             }
         ],
@@ -344,29 +339,28 @@ const remainingProjects = [
             {
                 heading: "Interesting Insight",
                 items: [
-                    "Turbines located far from each other in Jaisalmer show capability of having different local climatology."
+                    "During a site visit to Jaisalmer, it was observed that turbines are located quite far from each other, with each turbine or cluster potentially experiencing different local climatologies."
                 ]
             },
             {
                 heading: "Problem",
                 items: [
-                    "Current modelling uses a central point location generating power forecast.",
-                    "Intuitively wrong for large wind plants, but older NWP 25km² resolution justified it."
+                    "The current modeling pipeline extracts NWP forecasts based on a single point location (center) for the entire plant. Intuitively, this seems incorrect for large wind plants, though the NWP resolution of 25km² previously justified the decision."
                 ]
             },
             {
                 heading: "Solution",
                 items: [
-                    "Jua offers high spatial resolution creating opportunity to experiment.",
-                    "Around 97 turbine models built using a simple UI based tool with data cleaning."
+                    "Jua offers high spatial resolution, presenting an opportunity to experiment.",
+                    "Built around 97 individual turbine models using a simple UI-based tool that effectively handles the task alongside data cleaning."
                 ]
             },
             {
                 heading: "Impact",
                 isImpact: true,
                 items: [
-                    "Significant performance improvement during varying local conditions.",
-                    "Development of an effective wind power modelling tool with data cleaning & UI."
+                    "Significant performance improvement during periods of varying local conditions.",
+                    "Developed a wind power modeling tool with effective data cleaning and an intuitive UI."
                 ]
             }
         ],
@@ -440,21 +434,21 @@ const remainingProjects = [
             {
                 heading: "Interesting Observations",
                 items: [
-                    "Power curve (NWP -> Power) pattern seems changing at times.",
-                    "A static power curve could fail during such times leading to high penalties, which was seen in reality."
+                    "During knowledge transfer sessions regarding wind power modeling with the company Overspeed, an interesting observation was made: the power curve (NWP to Power) pattern changes over time.",
+                    "This indicates that a static power curve could fail during these shifts, leading to high penalties—a phenomenon observed in reality."
                 ]
             },
             {
                 heading: "Project",
                 items: [
-                    "Dynamic wind power model developed which gets updated every day with the last 32 days data going into it."
+                    "Developed a dynamic wind power model that automatically updates every day using the previous 32 days of back-tested data."
                 ]
             },
             {
                 heading: "Impact",
                 isImpact: true,
                 items: [
-                    "During times of varying behaviors, the dynamic model clearly showed superior performance over stable models."
+                    "During periods of varying behavior (due to wind plant conditions or NWP model intervals), the dynamic model demonstrated clearly superior performance over stable models."
                 ]
             }
         ],
@@ -507,28 +501,28 @@ const remainingProjects = [
             {
                 heading: "Problem",
                 items: [
-                    "Need for hindsight analysis and quick, objective decision making support during monsoon.",
-                    "Advanced models (Solcast) available but no place for easy viewing/fetching.",
-                    "Difficulty integrating temporary forecast service providers like solargis, calibsun etc."
+                    "During the monsoon season, there is a strong need for hindsight analysis and quick, objective decision-making support.",
+                    "Although advanced model forecasts (like Solcast) were available, there was no centralized platform for easy fetching, viewing, and analysis.",
+                    "Integrating temporary forecast service providers (like Solargis, Calibsun, etc.) was difficult."
                 ]
             },
             {
                 heading: "Project",
                 items: [
-                    "Developed a simple yet effective dashboard providing:",
-                    "Real time revised forecasts from all models.",
-                    "Real time performance overview.",
-                    "Effective & simple hindcast analysis.",
-                    "Forecast download.",
-                    "<em>Note: Entire pipelines built from scratch.</em>"
+                    "Developed a simple yet effective dashboard that provides the following features:",
+                    "Real-time revised forecasts from all available models.",
+                    "Real-time performance overview.",
+                    "Simple and highly effective hindcast analysis.",
+                    "Forecast download capabilities.",
+                    "<em>Note: All necessary data pipelines for the dashboard were also built from scratch.</em>"
                 ]
             },
             {
                 heading: "Impact",
                 isImpact: true,
                 items: [
-                    "Highly effective decision making during monsoon time for revisions.",
-                    "Objective framework for decision making."
+                    "Highly effective decision-making during the monsoon season for providing forecast revisions.",
+                    "Created an objective framework for decision-making."
                 ]
             }
         ],
@@ -581,25 +575,23 @@ const remainingProjects = [
             {
                 heading: "Need",
                 items: [
-                    "80% of portfolio is in STOA (majority solar).",
-                    "Absolute necessity to monitor external weather forecast models' performance.",
-                    "If a better performing model is observed, it must be integrated."
+                    "Since 80% of our portfolio is in STOA (Short Term Open Access), with the majority being solar, it is absolutely necessary to monitor the performance of all external weather forecast models. This ensures that if a better-performing model is observed, it can be integrated immediately."
                 ]
             },
             {
                 heading: "Project",
                 items: [
-                    "Developed streamlit dashboard showing forecast performances of all open source weather models (GHI) vs satellite derived GHI.",
-                    "Recommends the best forecast model.",
-                    "Generates power forecast as per plant configuration, available for download."
+                    "Developed a Streamlit dashboard that tracks the forecast performance of all available open-source weather models (GHI) by comparing them against satellite-derived GHI.",
+                    "The dashboard recommends the best forecast model based on current performance.",
+                    "Power forecasts are generated using this recommended model (as per the plant's custom configuration) and made available for immediate download."
                 ]
             },
             {
                 heading: "Impact",
                 isImpact: true,
                 items: [
-                    "Effective yet simple tool to keep an eye on external forecasting models.",
-                    "Action centric features facilitating immediate action taking."
+                    "An effective yet simple tool to monitor external forecasting models.",
+                    "Action-centric features facilitate immediate decision-making."
                 ]
             }
         ],
@@ -642,90 +634,38 @@ projectsData.push(...remainingProjects);
 
 const ongoingProjects = [
     {
-        id: "solar-intraday-algo",
+        id: "ongoing-projects",
         category: "ongoing",
-        title: "Solar Intraday Forecasting Algorithm",
-        subtitle: "Improvement over existing overspeed algorithms with satellite imagery.",
+        title: "Ongoing Projects",
+        subtitle: "A consolidated view of projects currently in development or planning.",
         sections: [
             {
-                heading: "Current Status",
+                heading: "9) Solar Intraday Forecasting Algorithm",
                 items: [
-                    "Measurement based forecast revising algorithm already developed, inspired from overspeed algorithm and an improvement over it.",
-                    "Satellite imagery based correction algorithm is in plan to be developed."
+                    "A measurement-based forecast revision algorithm has already been developed (inspired by, and improving upon, the overspeed algorithm).",
+                    "A satellite imagery-based correction algorithm is currently planned for development."
                 ]
-            }
-        ],
-        svg: `
-        <svg viewBox="0 0 500 300" width="100%" height="100%">
-            <!-- Satellite Concept -->
-            <path d="M 50 50 A 200 200 0 0 1 450 50" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="10,10" />
-            
-            <g transform="translate(250, 40)">
-                <animateTransform attributeName="transform" type="translate" values="50,50; 250,40; 450,50" dur="10s" repeatCount="indefinite" />
-                <rect x="-20" y="-10" width="40" height="20" fill="#94a3b8" />
-                <rect x="-40" y="-8" width="20" height="16" fill="#38bdf8" />
-                <rect x="20" y="-8" width="20" height="16" fill="#38bdf8" />
-                <!-- Beam -->
-                <polygon points="0,10 -30,100 30,100" fill="#fef08a" opacity="0.3">
-                    <animate attributeName="opacity" values="0; 0.5; 0" dur="2s" repeatCount="indefinite" />
-                </polygon>
-            </g>
-
-            <rect x="150" y="160" width="200" height="80" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
-            <!-- Code braces / Algo symbol -->
-            <text x="250" y="210" text-anchor="middle" font-size="40" font-weight="bold" fill="#3b82f6" font-family="monospace">&lt;/&gt;</text>
-            
-            <path d="M 230 160 L 230 130" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4,4">
-                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite" />
-            </path>
-            <path d="M 270 160 L 270 130" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4">
-                 <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite" />
-            </path>
-        </svg>`
-    },
-    {
-        id: "wind-intraday-algo",
-        category: "ongoing",
-        title: "Wind Intraday Forecasting Algorithm",
-        subtitle: "Developing next-generation wind intraday corrections.",
-        sections: [
+            },
             {
-                heading: "Current Status",
+                heading: "10) Wind Intraday Forecasting Algorithm",
                 items: [
-                    "Data cleaning, time series construction is done.",
-                    "Ideation and development is in process."
+                    "Data cleaning and time-series construction have been completed.",
+                    "Ideation and core development are currently in progress."
+                ]
+            },
+            {
+                heading: "11) Agency Forecasting performance comparison dashboard with AI intelligence.",
+                items: [
+                    "Integration in Adani network in process"
+                ]
+            },
+            {
+                heading: "12) Long term budget forecast vs actuals comparison dashboard with AI intelligence.",
+                items: [
+                    "In planning"
                 ]
             }
-        ],
-        svg: `
-        <svg viewBox="0 0 500 300" width="100%" height="100%">
-            <!-- Time Series Data -->
-            <path d="M 50 200 L 100 150 L 150 180 L 200 120 L 250 160 L 300 80 L 350 140 L 400 60 L 450 100" fill="none" stroke="#cbd5e1" stroke-width="3" opacity="0.5" />
-            
-            <!-- Cleaned curve overlay -->
-            <path d="M 50 200 Q 125 100 200 120 T 300 80 T 450 100" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round">
-                <animate attributeName="stroke-dasharray" values="0,600; 600,0" dur="3s" repeatCount="indefinite" />
-            </path>
-            
-            <!-- Construction / Ideation visuals -->
-            <g transform="translate(380, 180)">
-                <circle cx="0" cy="0" r="25" fill="#f1f5f9" stroke="#64748b" stroke-width="3" />
-                <circle cx="0" cy="0" r="15" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4">
-                    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite" />
-                </circle>
-                <path d="M -5 -10 L 5 -10 L 10 0 L 5 10 L -5 10 L -10 0 Z" fill="#475569" />
-                <animateTransform attributeName="transform" type="rotate" from="0 380 180" to="360 380 180" dur="10s" repeatCount="indefinite" />
-            </g>
-            <text x="380" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">Processing</text>
-            
-            <!-- Wind representation -->
-            <path d="M 80 100 Q 150 80 220 100" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4">
-                <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1s" repeatCount="indefinite" />
-            </path>
-            <path d="M 120 120 Q 180 100 240 120" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4">
-                <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1s" repeatCount="indefinite" />
-            </path>
-        </svg>`
+        ]
     }
 ];
 

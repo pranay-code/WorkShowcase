@@ -3,20 +3,20 @@ const personalDevelopment = [
         id: "personal-dev",
         category: "personal",
         title: "Personal Development Requirements",
-        subtitle: "Requirements to lead and grow beyond typical career trajectory.",
+        subtitle: "(To lead and grow beyond a typical career trajectory)",
         sections: [
             {
-                heading: "Core Human Skills",
+                heading: "1. Core Human Skills:",
                 items: [
-                    "<strong>Training:</strong> People communication, People engagement, Management & trust building, Project Management.",
-                    "<strong>Practise Ground:</strong> Involvement in digital projects, Business facing to work on people skills."
+                    "<strong>Training Needs:</strong> People communication, engagement, management, trust-building, and project management.",
+                    "<strong>Practice Grounds:</strong> Active involvement in digital projects and taking on business-facing roles to refine people skills."
                 ]
             },
             {
-                heading: "Technical Skills",
+                heading: "2. Technical Skills:",
                 items: [
-                    "<strong>Training:</strong> Traditional AI (Deep learning), Generative AI (RAG, code execution, tools), Agentic AI development frameworks.",
-                    "<strong>Practise Ground:</strong> Opportunity to develop MVP for tech AI projects, Technical engagement with core vendor team."
+                    "<strong>Training Needs:</strong> Traditional AI: Deep Learning. Generative AI: Building GenAI applications (RAG, code execution, tool connection) and working with Agentic AI development frameworks.",
+                    "<strong>Practice Grounds:</strong> Opportunities to develop MVPs for technical AI projects and engaging technically with core vendor teams."
                 ]
             }
         ],

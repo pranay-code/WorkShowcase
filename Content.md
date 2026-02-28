@@ -152,6 +152,13 @@ An innovative, data-centric project.
 * Data cleaning and time-series construction have been completed.
 * Ideation and core development are currently in progress.
 
+#### 11) Agency Forecasting performance comparison dashboard with AI intelligence.
+* Integration in Adani network in process
+#### 12) Long term budget forecast vs actuals  comparison dashboard with AI intelligence.
+
+* In planning
+
+
 ---
 
 ### 11) Personal Development Requirements
